@@ -30,8 +30,16 @@ AI generation must not invent dates, metrics, employers, skills, or outcomes. Th
 
 ## Tech stack
 
-- [Next.js](https://nextjs.org) (App Router) with TypeScript and Tailwind CSS
-- Product requirements: [docs/PRD.md](./docs/PRD.md)
+- [Next.js](https://nextjs.org) 16 (App Router, Cache Components) with React 19 and TypeScript
+- Tailwind CSS 4 with a custom design-token layer and Radix primitives
+- Supabase for Postgres, auth, private storage, and row-level security (planned — see the implementation plan)
+- Vercel AI SDK with Anthropic as the primary model provider and OpenAI as fallback (planned)
+
+## Documentation
+
+- [Product Requirements Document](./docs/PRD.md) — goals, scope, functional requirements, AI safeguards, data model, and delivery plan.
+- [Implementation Plan](./docs/IMPLEMENTATION_PLAN.md) — design system, architecture decisions, data model, AI pipeline, phased delivery with exit gates, quality and launch plan.
+- [Agent guidelines](./AGENTS.md) — repository conventions and version-matched Next.js docs.
 
 ## Getting started
 
