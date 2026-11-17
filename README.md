@@ -31,7 +31,7 @@ AI generation must not invent dates, metrics, employers, skills, or outcomes. Th
 ## Tech stack
 
 - [Next.js](https://nextjs.org) (App Router) with TypeScript and Tailwind CSS
-- Product requirements: [PRD.md](./PRD.md)
+- Product requirements: [docs/PRD.md](./docs/PRD.md)
 
 ## Getting started
 
