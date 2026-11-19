@@ -32,8 +32,23 @@ AI generation must not invent dates, metrics, employers, skills, or outcomes. Th
 
 - [Next.js](https://nextjs.org) 16 (App Router, Cache Components) with React 19 and TypeScript
 - Tailwind CSS 4 with a custom design-token layer and Radix primitives
-- Supabase for Postgres, auth, private storage, and row-level security (planned — see the implementation plan)
+- PostgreSQL 17 via Docker locally and [Neon](https://neon.com) free tier in production, with Drizzle ORM
+- [Better Auth](https://www.better-auth.com) for email/password auth, verification, and password reset
+- [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/) for private CV and artifact storage
+- [Resend](https://resend.com) for transactional email
 - Vercel AI SDK with Anthropic as the primary model provider and OpenAI as fallback (planned)
+
+## Design system
+
+The Phase 1 design system is implemented in [`src/app/globals.css`](./src/app/globals.css) and [`src/components`](./src/components):
+
+- `src/components/ui/` — accessible primitives (buttons, fields, selection controls, dialogs, tabs, tooltips, progress steps, skeletons, empty states).
+- `src/components/domain/` — product components (status pills, evidence chips, fit summaries, requirement rows, job cards, application rows).
+- `src/app/design/` — a live gallery of tokens, type, spacing, every component state, and the domain patterns.
+
+Run the app and open [http://localhost:3000/design](http://localhost:3000/design). The gallery is available in development. In production it returns a 404 unless `ENABLE_DESIGN_GALLERY=true` is set **at build time**.
+
+The design is light-theme only for the pilot, targets WCAG 2.2 AA, and uses semantic tokens (`bg-surface`, `text-muted`, `border-line`) rather than raw hex values.
 
 ## Documentation
 
@@ -43,11 +58,16 @@ AI generation must not invent dates, metrics, employers, skills, or outcomes. Th
 
 ## Getting started
 
-Requires Node.js LTS.
+Requires Node.js 22 LTS.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) for the landing page, or [http://localhost:3000/design](http://localhost:3000/design) for the design-system gallery.
+
+```bash
+npm run typecheck   # generate route types, then run tsc
+npm run lint
+```
